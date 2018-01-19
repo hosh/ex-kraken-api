@@ -3,7 +3,7 @@ defmodule KrakenApi.Public do
   Public Kraken API calls
   """
 
-  alias KarkenApi.Http, as: Http
+  alias KrakenApi.Http, as: Http
 
   @doc """
   Get the server time.
