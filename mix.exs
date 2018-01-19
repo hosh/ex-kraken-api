@@ -11,7 +11,7 @@ defmodule KrakenApi.Mixfile do
       package: package(),
       deps: deps(),
       name: "kraken_api",
-      source_url: "https://github.com/x-ji/kraken_api"
+      source_url: "https://github.com/hosh/ex-kraken-api"
     ]
   end
 
@@ -40,9 +40,9 @@ defmodule KrakenApi.Mixfile do
   defp package do
     [
       files: ["lib", "mix.exs", "README*", "LICENSE*"],
-      maintainers: ["JI Xiang"],
+      maintainers: ["Ho-Sheng Hsiao"],
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/x-ji/kraken_api"}
+      links: %{"GitHub" => "https://github.com/hosh/ex-kraken-api"}
     ]
   end
 end

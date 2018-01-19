@@ -1,6 +1,15 @@
-# kraken_api
+# ex-kraken-api
 
 **Elixir library for Kraken (kraken.com) exchange API**
+
+## Attribution
+
+Based upon
+
+ 1. https://github.com/x-ji/kraken_api
+ 2. https://github.com/1st8/exkraken
+ 3. https://github.com/parubets/kraken_elixir
+
 
 ## Installation
 
