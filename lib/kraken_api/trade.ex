@@ -1,10 +1,8 @@
-defmodule KrakenApi do
+defmodule KrakenApi.Trade do
   @moduledoc """
-  Documentation of all the API calls and the corresponding parameters.
+  Private User Trading Kraken API calls
   """
 
-
-  ## Private user trading
   @doc """
   Add standard order
 
@@ -63,6 +61,5 @@ defmodule KrakenApi do
   def cancel_open_order(params \\ %{}) do
     invoke_private_api("CancelOrder", params)
   end
-
 
 end
