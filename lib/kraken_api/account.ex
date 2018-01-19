@@ -3,19 +3,21 @@ defmodule KrakenApi.Account do
   Private User Account Kraken API calls
   """
 
+  alias KrakenApi.Http, as: Http
+
   @doc """
   Get account balance
 
   (This API call accepts no parameters)
 
   ## Example
-      iex(1)> KrakenApi.get_account_balance()
+      iex(1)> KrakenApi.Account.balance()
       {:ok,
       %{"BCH" => "...", "XETH" => "...", "XLTC" => "...",
        "XXBT" => "...", "XZEC" => "...", "ZEUR" => "..."}}
   """
-  def get_account_balance(params \\ %{}) do
-    invoke_private_api("Balance", params)
+  def balance(params \\ %{}) do
+    Http.signed_post("Balance", params)
   end
 
   @doc """
@@ -26,8 +28,8 @@ defmodule KrakenApi.Account do
       - currency (default)
   - asset = base asset used to determine balance (default = ZUSD)
   """
-  def get_trade_balance(params \\ %{}) do
-    invoke_private_api("TradeBalance", params)
+  def trade_balance(params \\ %{}) do
+    Http.signed_post("TradeBalance", params)
   end
 
   @doc """
@@ -37,8 +39,8 @@ defmodule KrakenApi.Account do
   - trades = whether or not to include trades in output (optional.  default = false)
   - userref = restrict results to given user reference id (optional)
   """
-  def get_open_orders(params \\ %{}) do
-    invoke_private_api("OpenOrders", params)
+  def open_orders(params \\ %{}) do
+    Http.signed_post("OpenOrders", params)
   end
 
   @doc """
@@ -56,13 +58,13 @@ defmodule KrakenApi.Account do
     - both (default)
 
   ## Example
-      iex(8)> KrakenApi.get_closed_orders(%{start: 1507204548})
+      iex(8)> KrakenApi.Account.closed_orders(%{start: 1507204548})
       {:ok,
       %{"closed" => ...},
         ...}
   """
-  def get_closed_orders(params \\ %{}) do
-    invoke_private_api("ClosedOrders", params)
+  def closed_orders(params \\ %{}) do
+    Http.signed_post("ClosedOrders", params)
   end
 
   @doc """
@@ -75,7 +77,7 @@ defmodule KrakenApi.Account do
 
   """
   def query_orders_info(params \\ %{}) do
-    invoke_private_api("QueryOrders", params)
+    Http.signed_post("QueryOrders", params)
   end
 
   @doc """
@@ -93,8 +95,8 @@ defmodule KrakenApi.Account do
   - end = ending unix timestamp or trade tx id of results (optional.  inclusive)
   - ofs = result offset
   """
-  def get_trades_history(params \\ %{}) do
-    invoke_private_api("TradesHistory", params)
+  def trades_history(params \\ %{}) do
+    Http.signed_post("TradesHistory", params)
   end
 
   @doc """
@@ -105,7 +107,7 @@ defmodule KrakenApi.Account do
   - trades = whether or not to include trades related to position in output (optional.  default = false)
   """
   def query_trades_info(params \\ %{}) do
-    invoke_private_api("QueryTrades", params)
+    Http.signed_post("QueryTrades", params)
   end
 
   @doc """
@@ -115,8 +117,8 @@ defmodule KrakenApi.Account do
   - txid = comma delimited list of transaction ids to restrict output to
   - docalcs = whether or not to include profit/loss calculations (optional.  default = false)
   """
-  def get_open_positions(params \\ %{}) do
-    invoke_private_api("OpenPositions", params)
+  def open_positions(params \\ %{}) do
+    Http.signed_post("OpenPositions", params)
   end
 
   @doc """
@@ -137,7 +139,7 @@ defmodule KrakenApi.Account do
   - ofs = result offset
 
   ## Example
-      ex(1)> KrakenApi.get_ledgers_info(%{type: "deposit"})
+      ex(1)> KrakenApi.Account.ledgers_info(%{type: "deposit"})
       {:ok,
       %{"count" => 125,
        "ledger" => %{"..." => %{"aclass" => "currency",
@@ -149,8 +151,8 @@ defmodule KrakenApi.Account do
            }}}
 
   """
-  def get_ledgers_info(params \\ %{}) do
-    invoke_private_api("Ledgers", params)
+  def ledgers_info(params \\ %{}) do
+    Http.signed_post("Ledgers", params)
   end
 
   @doc """
@@ -160,7 +162,7 @@ defmodule KrakenApi.Account do
   - id = comma delimited list of ledger ids to query info about (20 maximum)
   """
   def query_ledgers(params \\ %{}) do
-    invoke_private_api("QueryLedgers", params)
+    Http.signed_post("QueryLedgers", params)
   end
 
   @doc """
@@ -170,7 +172,7 @@ defmodule KrakenApi.Account do
   - pair = comma delimited list of asset pairs to get fee info on (optional)
   - fee-info = whether or not to include fee info in results (optional)
   """
-  def get_trade_volume(params \\ %{}) do
-    invoke_private_api("TradeVolume", params)
+  def trade_volume(params \\ %{}) do
+    Http.signed_post("TradeVolume", params)
   end
 end

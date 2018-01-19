@@ -3,6 +3,8 @@ defmodule KrakenApi.Trade do
   Private User Trading Kraken API calls
   """
 
+  alias KrakenApi.Http, as: Http
+
   @doc """
   Add standard order
 
@@ -49,7 +51,7 @@ defmodule KrakenApi.Trade do
     - close[price2] = secondary price
   """
   def add_standard_order(params \\ %{}) do
-    invoke_private_api("AddOrder", params)
+    Http.signed_post("AddOrder", params)
   end
 
   @doc """
@@ -59,7 +61,6 @@ defmodule KrakenApi.Trade do
   - txid = transaction id
   """
   def cancel_open_order(params \\ %{}) do
-    invoke_private_api("CancelOrder", params)
+    Http.signed_post("CancelOrder", params)
   end
-
 end
