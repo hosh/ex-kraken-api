@@ -69,9 +69,11 @@ defmodule KrakenApi.Public do
 
   Param:
   - pair = comma delimited list of asset pairs to get info on
+
+  iex(1)> KrakenApi.Public.ticker(%{pair: "BTC/USD,XBT/USD"})
   """
-  def ticker_information(params \\ %{}) do
-    Http.get("Ticker" <> URI.encode_query(params))
+  def ticker(params \\ %{}) do
+    Http.get("Ticker?" <> URI.encode_query(params))
   end
 
   @doc """
@@ -84,7 +86,7 @@ defmodule KrakenApi.Public do
   - since = return committed OHLC data since given id (optional.  exclusive)
   """
   def ohlc_data(params \\ %{}) do
-    Http.get("OHLC" <> URI.encode_query(params))
+    Http.get("OHLC?" <> URI.encode_query(params))
   end
 
   @doc """
@@ -95,7 +97,7 @@ defmodule KrakenApi.Public do
   - count = maximum number of asks/bids (optional)
   """
   def order_book(params \\ %{}) do
-    Http.get("Depth" <> URI.encode_query(params))
+    Http.get("Depth?" <> URI.encode_query(params))
   end
 
   @doc """
@@ -106,7 +108,7 @@ defmodule KrakenApi.Public do
   - since = return spread data since given id (optional.  inclusive)
   """
   def recent_trades(params \\ %{}) do
-    Http.get("Trades" <> URI.encode_query(params))
+    Http.get("Trades?" <> URI.encode_query(params))
   end
 
   @doc """
@@ -116,7 +118,7 @@ defmodule KrakenApi.Public do
   - pair = asset pair to get spread data for
   - since = return spread data since given id (optional.  inclusive)
   """
-  def recent_spread_data(params \\ %{}) do
-    Http.get("Spread" <> URI.encode_query(params))
+  def recent_spread(params \\ %{}) do
+    Http.get("Spread?" <> URI.encode_query(params))
   end
 end
